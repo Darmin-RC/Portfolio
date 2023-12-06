@@ -1,0 +1,55 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
+import Project from "../components/Project.astro";
+---
+
+<Layout title="Darmin RC | Projects">
+  <Navbar />
+  <div class="projects">
+    <div class="title">
+      <h2>My <span>Projects</span></h2>
+    </div>
+    <Project
+      title="Rose Skin System"
+      description="System for cosmetic clinic with CRUD developed in Vue 3 and Firebase."
+      img="/rose-skin.png"
+      demo="https://github.com/Darmin-RC/Rose-Skin-System/"
+      code="https://github.com/Darmin-RC/Rose-Skin-System/"
+    />
+    <Project
+      title="Darmin RC - Blog"
+      description="Very soon, it will be developed with Node JS, Express, Mongodb and Vue JS (Stack MENV)"
+      img="https://media.istockphoto.com/id/1143319957/vector/coming-soon-hand-lettering-inscription.jpg?s=612x612&w=0&k=20&c=D1kcjE65K28QDpRcTcCAJq4HJcblzzjb_aoG5LaT0Io="
+      demo="https://github.com/Darmin-RC/"
+      code="https://github.com/Darmin-RC/"
+    />
+    <Project
+      title="SAM"
+      description="Student system for schools, is being developed in Vue JS, Node JS, Express JS among other technologies."
+      img="https://media.istockphoto.com/id/1143319957/vector/coming-soon-hand-lettering-inscription.jpg?s=612x612&w=0&k=20&c=D1kcjE65K28QDpRcTcCAJq4HJcblzzjb_aoG5LaT0Io="
+      demo="https://github.com/Darmin-RC/"
+      code="https://github.com/Darmin-RC/"
+    />
+  </div>
+</Layout>
+
+<style>
+  .projects {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 1em;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .title h2 {
+    text-shadow: 2px 4px 10px #000;
+  }
+</style>

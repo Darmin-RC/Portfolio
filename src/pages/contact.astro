@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<Layout title="Darmin RC | Contact">
+  <Navbar />
+  <div class="contact">
+    <div class="title">
+      <h2>Contact <span>Me</span></h2>
+    </div>
+    <Contact />
+  </div>
+</Layout>
+
+<style>
+  .contact {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 1em;
+  }
+
+  .title h2 {
+    text-shadow: 2px 4px 10px #000;
+  }
+</style>

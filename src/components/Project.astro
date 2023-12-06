@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface Props {
+  title: String;
+  img: String;
+  description: String;
+  demo: String;
+  code: String;
+}
+
+const { title, img, description, code, demo } = Astro.props;
+---
+
+<Layout>
+  <div class="card">
+    <img src={img} alt="" />
+    <div class="card__content">
+      <p class="card__title">{title}</p>
+      <p class="card__description">
+        {description}
+      </p>
+      <a href={demo} class="card__button">Live Demo</a>
+      <a href={code} class="card__button secondary">Source Code</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .card {
+    position: relative;
+    width: 400px;
+    height: fit-content;
+    aspect-ratio: 16/16;
+    background: var(--dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 1000px;
+    box-shadow: 2px 4px 10px #000;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .card img {
+    width: 250px;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .card__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 4px 10px #000;
+  }
+
+  .card__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: var(--dark);
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .card:hover .card__content {
+    transform: rotateX(0deg);
+  }
+
+  .card__title {
+    margin: 0;
+    font-size: 1.7em;
+    color: var(--green);
+    font-weight: 700;
+    text-shadow: 1px 2px 5px #000;
+  }
+
+  .card:hover svg {
+    scale: 0;
+  }
+
+  .card__description {
+    margin: 10px 0 10px;
+    font-size: 1em;
+    color: var(--white);
+    line-height: 1.4;
+    text-shadow: 1px 2px 5px #000;
+  }
+
+  .card__button {
+    padding: 2px 6px;
+    font-size: 1em;
+    border-radius: 0.5em;
+    background: var(--green);
+    color: var(--black);
+    font-weight: 300;
+    box-shadow: 2px 4px 10px #000;
+  }
+
+  .secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--green);
+  }
+</style>

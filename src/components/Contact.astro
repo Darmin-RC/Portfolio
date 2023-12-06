@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+import sendGrid from "@sendgrid/mail";
+sendGrid.setApiKey(import.meta.env.SENDGRID_API_KEY);
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const email = data.get("email");
+    const message = data.get("message");
+
+    const msg = {
+      to: "darminrc@gmail.com",
+      from: "darminrc@gmail.com",
+      replyTo: { email: email, name: name },
+      subject: `Recibiste un Email del Portafolio por parte de: ${name}`,
+      text: message,
+    };
+    await sendGrid
+      .send(msg)
+      .then(() => {
+        console.log("Email sent");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  } catch (error) {
+    console.error(error);
+  }
+}
+---
+
+<Layout>
+  <div class="form">
+    <form method="POST">
+      <input type="text" name="name" placeholder="Your Name" />
+      <input type="email" name="email" placeholder="Your Email" />
+      <textarea name="message" placeholder="Your Message"></textarea>
+      <div><button type="submit">Send</button></div>
+    </form>
+  </div>
+</Layout>
+
+<style>
+  .form {
+    display: flex;
+    flex-direction: column;
+    background: var(--dark);
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 2px 4px 10px #000;
+  }
+
+  .form button {
+    background: var(--green);
+    padding: 0.2em 1em;
+    font-size: 1.4em;
+    border-radius: 0.5em;
+    box-shadow: 2px 4px 10px #000;
+  }
+</style>

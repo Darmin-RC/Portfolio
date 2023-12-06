@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface Props {
+  span1?: String;
+  span2?: String;
+  h2?: String;
+  h3?: String;
+  p?: String;
+  a?: String;
+  img?: String;
+}
+
+const { span1, span2, h2, h3, p, a, img } = Astro.props;
+---
+
+<Layout>
+  <div class="hero">
+    <div class="text">
+      <h2><span>{span1}</span> {h2} <span>{span2}</span></h2>
+      <p>{p}</p>
+      <h3>
+        {h3}
+      </h3>
+      <img src={img} alt="" />
+      <a href="/about">{a}</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @media only screen and (min-width: 300px) {
+    .hero {
+      width: 100vw;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1em;
+    }
+
+    .text {
+      background: var(--dark);
+      padding: 1em;
+      border-radius: 0.5em;
+      box-shadow: 2px 4px 10px #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: fit-content;
+      max-width: 500px;
+    }
+
+    .text p {
+      width: fit-content;
+      background: var(--green);
+      color: #000;
+      font-weight: 800;
+      padding: 0 0.5em;
+      border-radius: 0.25em;
+      margin: 0.3em 0;
+    }
+
+    .text h3 {
+      font-weight: normal;
+      margin: 0.3em 0;
+      text-shadow: 1px 2px 5px #000;
+    }
+
+    .text h2 {
+      font-size: 3em;
+      text-shadow: 1px 2px 5px #000;
+    }
+
+    .text a {
+      width: fit-content;
+      border-bottom: solid 2px var(--green);
+    }
+
+    .text img {
+      padding: 0.4em 0;
+      border-radius: 0.8em;
+      width: fit-content;
+    }
+  }
+</style>

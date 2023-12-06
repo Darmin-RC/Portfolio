@@ -1,0 +1,146 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const links = ["home", "about", "skills", "projects", "blog", "contact"];
+
+function generateLinkPath(link) {
+  if (link.toLowerCase() === "home") {
+    return "/";
+  } else if (link.toLowerCase() === "blog") {
+    return "https://darmin-blog.web.app/";
+  } else {
+    return `/${link}`;
+  }
+}
+---
+
+<Layout>
+  <div class="navigation">
+    <div class="navbar">
+      <div class="logo">
+        <h1>Darmin <span>RC</span></h1>
+      </div>
+      <div class="responsive-button" id="button">
+        <button>
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="respo-menu" id="menu">
+    <div class="links-res">
+      {links.map((link) => <a href={generateLinkPath(link)}>{link}</a>)}
+    </div>
+    <div class="social-res">
+      <a href="https://github.com/Darmin-RC/"><i class="fa fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/darmin-rc/i class=" fa fa-linkedin"
+      ></a>
+    </div>
+    <a href="https://instagram.com/Darmin006/"
+      ><i class="fa fa-instagram"></i></a
+    >
+  </div>
+</Layout>
+
+<script>
+  const menu = document.getElementById("menu");
+  const button = document.getElementById("button");
+
+  button.addEventListener("click", () => {
+    if (menu.style.display == "flex") {
+      menu.style.display = "none";
+    } else {
+      menu.style.display = "flex";
+    }
+  });
+</script>
+
+<style>
+  @media only screen and (min-width: 300px) {
+    .navigation {
+      width: 100%;
+      height: 7vh;
+    }
+
+    .links,
+    .social {
+      display: none;
+    }
+
+    .logo,
+    .responsive-button {
+      display: flex;
+      align-items: center;
+      padding: 1em;
+    }
+
+    .logo {
+      width: 90%;
+    }
+    .responsive-button {
+      width: 10%;
+      justify-content: end;
+    }
+
+    .responsive-button button {
+      color: var(--white);
+      font-size: 1.3em;
+      text-shadow: 1px 2px 5px #000;
+      cursor: pointer;
+    }
+
+    .responsive-button button:hover {
+      color: var(--green);
+    }
+
+    .navbar {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      background: var(--dark);
+    }
+
+    .respo-menu {
+      display: none;
+      width: 100%;
+      height: 93vh;
+      flex-direction: column;
+      padding: 1em;
+      background: var(--dark);
+    }
+
+    .links-res {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .links-res a {
+      text-align: center;
+      background: var(--green);
+      margin: 0.5em 0;
+      padding: 0.3em 1em;
+      border-radius: 0.5em;
+      text-transform: capitalize;
+      box-shadow: 2px 4px 10px #000;
+      width: fit-content;
+    }
+
+    .links-res a:hover {
+      background: var(--white);
+      text-shadow: none;
+      color: #000;
+    }
+
+    .social-res {
+      display: flex;
+      justify-content: center;
+      margin: 1em;
+    }
+
+    .social-res a {
+      margin: 1em 0.5em;
+    }
+  }
+</style>
